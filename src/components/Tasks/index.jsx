@@ -3,34 +3,10 @@
 import { useState } from "react";
 import { Task } from "@/components/Task";
 import styles from "./styles.module.css";
+import { initialTasks } from "@/data/tasks";
 
 export function Tasks() {
-  const [tasks, setTasks] = useState([
-    {
-      name: "Example",
-      description: "This is an example task",
-      subtasks: [
-        { name: "Subtask 1", description: "This is a subtask", subtasks: [] },
-        {
-          name: "Subtask 2",
-          description: "This is another subtask",
-          subtasks: [],
-        },
-      ],
-    },
-    {
-      name: "Another Example",
-      description: "This is another example task",
-      subtasks: [
-        { name: "Subtask 1", description: "This is a subtask", subtasks: [] },
-        {
-          name: "Subtask 2",
-          description: "This is another subtask",
-          subtasks: [],
-        },
-      ],
-    },
-  ]);
+  const [tasks, setTasks] = useState(initialTasks);
 
   return (
     <div className={styles.root}>
