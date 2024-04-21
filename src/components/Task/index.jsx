@@ -1,13 +1,22 @@
 import styles from "./styles.module.css";
 
-export function Task({ children, name, description }) {
+export function Task({ name, description, subtasks }) {
   return (
     <div className={styles.wrapper}>
       <div className={styles.mainTask}>
         <div className={styles.name}>{name}</div>
         <div className={styles.description}>{description}</div>
       </div>
-      {children ? <div className={styles.subTasks}>{children}</div> : null}
+      <div className={styles.subTasks}>
+        {subtasks.map((subtask) => (
+          <Task
+            key={subtask.name}
+            name={subtask.name}
+            description={subtask.description}
+            subtasks={subtask.subtasks}
+          />
+        ))}
+      </div>
     </div>
   );
 }
