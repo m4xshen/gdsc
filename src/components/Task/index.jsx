@@ -1,4 +1,4 @@
-import styles from "./Task.module.css";
+import styles from "./styles.module.css";
 
 export function Task({ children, name, description }) {
   return (
