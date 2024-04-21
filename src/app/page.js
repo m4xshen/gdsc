@@ -1,5 +1,5 @@
-import styles from "./page.module.css";
-import { Tasks } from "@/components/Tasks";
+import styles from './page.module.css';
+import { Tasks } from '@/components/Tasks';
 
 export default function Home() {
   return (
