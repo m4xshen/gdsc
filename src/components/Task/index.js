@@ -1,6 +1,6 @@
 import styles from './styles.module.css';
 
-export function Task({ name, description, subtasks }) {
+export default function Task({ name, description, subtasks }) {
   return (
     <div className={styles.wrapper}>
       <div className={styles.mainTask}>
