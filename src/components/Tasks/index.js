@@ -12,7 +12,7 @@ export default function Tasks() {
     <div className={styles.root}>
       {tasks.map((task) => (
         <Task
-          key={task.name}
+          key={task.id}
           name={task.name}
           description={task.description}
           subtasks={task.subtasks}

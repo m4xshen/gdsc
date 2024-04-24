@@ -10,7 +10,7 @@ export default function Task({ name, description, subtasks }) {
       <div className={styles.subTasks}>
         {subtasks.map((subtask) => (
           <Task
-            key={subtask.name}
+            key={subtask.id}
             name={subtask.name}
             description={subtask.description}
             subtasks={subtask.subtasks}
