@@ -1,27 +1,27 @@
 .wrapper {
   display: flex;
   column-gap: 0.5rem;
+}
 
-  .mainTask {
-    max-width: 20rem;
-    border: solid 1px #212121;
-    border-radius: 0.5rem;
-    padding: 0.5rem;
+.mainTask {
+  max-width: 20rem;
+  border: solid 1px #212121;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
 
-    .name {
-      font-size: 1.1rem;
-      font-weight: 600;
-    }
+.name {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
 
-    .description {
-      font-size: 0.9rem;
-      margin-top: 0.5rem;
-    }
-  }
+.description {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
 
-  .subTasks {
-    display: flex;
-    flex-direction: column;
-    row-gap: 0.5rem;
-  }
+.subTasks {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
 }
