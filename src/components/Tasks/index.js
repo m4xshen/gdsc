@@ -5,9 +5,9 @@ import Task from '@/components/Task';
 import styles from './styles.module.css';
 import { initialTasks } from '@/data/tasks';
 
+
 export default function Tasks() {
   const [tasks, setTasks] = useState(initialTasks);
-
   return (
     <div className={styles.root}>
       {tasks.map((task) => (
