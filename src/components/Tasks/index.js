@@ -11,7 +11,6 @@ export default function Tasks() {
 
   return (
     <div className={styles.root}>
-
       {tasks.map((task) => (
         <Task
           key={task.id}
@@ -20,15 +19,7 @@ export default function Tasks() {
           initSubtasks={task.subtasks}
         />
       ))}
-
-      <div className={styles.Button}>
-        
-        <AddMainButton
-          tasks={tasks}
-          setTasks={setTasks} />
-      </div>
-      
+      <AddMainButton tasks={tasks} setTasks={setTasks} />
     </div>
-    
   );
 }
