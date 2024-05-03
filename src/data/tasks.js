@@ -23,7 +23,7 @@ export const initialTasks = [
         description: 'This is a subtask yooo~',
         subtasks: [],
       },
-      
+
     ],
   },
   {

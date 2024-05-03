@@ -1,17 +1,17 @@
 import styles from './styles.module.css';
 import { nanoid } from 'nanoid'
 
-export default function AddButton({ subtasks, setSubtasks }){
+export default function AddMainButton({ tasks, setTasks }) {
 
     return (
-        <button className={styles.button} onClick = {()=>{
-            setSubtasks([...subtasks, {
+        <button className={styles.mainButton} onClick={() => {
+            setTasks([...tasks, {
                 id: nanoid(),
-                name: 'New Subtask',
+                name: 'New Maintask',
                 description: 'New Detail.',
                 subtasks: [],
             }])
-        
+
         }}>+</button>
-    );  
+    );
 }

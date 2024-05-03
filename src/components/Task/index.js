@@ -1,7 +1,10 @@
+import { useState } from 'react';
 import styles from './styles.module.css';
 import AddButton from '@/components/AddButton';
  
-export default function Task({ name, description, subtasks }) {
+export default function Task({ name, description, initSubtasks }) {
+  const [subtasks, setSubtasks] = useState(initSubtasks);
+
   return (
     <div className={styles.wrapper}>
       
@@ -9,9 +12,11 @@ export default function Task({ name, description, subtasks }) {
         <div className={styles.name}>{name}</div>
         <div className={styles.description}>{description}</div>
       </div>
+
       <AddButton
-        
-        subtasks={subtasks} />
+        subtasks={subtasks}
+        setSubtasks={setSubtasks}
+      />
       
       <div className={styles.subTasks}>
         {subtasks.map((subtask) => (
@@ -19,7 +24,7 @@ export default function Task({ name, description, subtasks }) {
             key={subtask.id}
             name={subtask.name}
             description={subtask.description}
-            subtasks={subtask.subtasks}
+            initSubtasks={subtask.subtasks}
           />
         ))}
       </div>
