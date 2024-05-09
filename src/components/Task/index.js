@@ -3,14 +3,39 @@ import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import styles from './styles.module.css';
 
-export default function Task({ id, name, description, initSubtasks, onClick }) {
+
+export default function Task({ initTask , initSubtasks, onClick }) {
   const [subtasks, setSubtasks] = useState(initSubtasks);
+  const [task,setTask] = useState(initTask);
+  
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.mainTask} onClick={()=>onClick(id)}>
-        <div className={styles.name}>{name}</div>
-        <div className={styles.description}>{description}</div>
+      <div className={task.done ? styles.mainTaskDone : styles.mainTask} onClick={()=>onClick(task.id)}>
+        <div className={styles.firstLine}>
+
+          <button
+            className={styles.doneButton} onClick={() => {
+              
+              subtasks.map((subtask) => {
+                subtask.done=!task.done;
+          
+              })
+              setTask({
+                ...task,
+                done: !task.done,
+              });
+
+              console.log(task);
+            }}>
+
+            {"\u2713"} </button>
+
+          <div className={task.done ? styles.nameDone : styles.name}>{task.name}</div>
+        </div>
+
+        <div className={styles.description}>{task.description}</div>
+
         <button
           className={styles.button}
           onClick={() => {
@@ -19,6 +44,7 @@ export default function Task({ id, name, description, initSubtasks, onClick }) {
               {
                 id: nanoid(),
                 name: 'New Subtask',
+                done: 0,
                 description: 'New Detail.',
                 subtasks: [],
               },
@@ -30,16 +56,20 @@ export default function Task({ id, name, description, initSubtasks, onClick }) {
       </div>
 
       <div className={styles.subTasks}>
-        {subtasks.map((subtask) => (
-          <Task
-            id={subtask.id}
-            key={subtask.id}
-            name={subtask.name}
-            description={subtask.description}
-            onClick={onClick}
-            initSubtasks={subtask.subtasks}
-          />
-        ))}
+        {subtasks.map((subtask) => {
+          
+          return (
+            <Task
+              id={subtask.id}
+              key={subtask.id}
+              initTask={subtask}
+              onClick={onClick}
+              initSubtasks={subtask.subtasks}
+            />            
+          )
+
+        })}
+
       </div>
     </div>
   );
