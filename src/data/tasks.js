@@ -17,6 +17,13 @@ export const initialTasks = [
         description: 'This is another subtask',
         subtasks: [],
       },
+      {
+        id: id++,
+        name: 'Subtask 3',
+        description: 'This is a subtask yooo~',
+        subtasks: [],
+      },
+
     ],
   },
   {
@@ -37,5 +44,11 @@ export const initialTasks = [
         subtasks: [],
       },
     ],
+  },
+  {
+    id: id++,
+    name: 'Yet Another Example',
+    description: 'This is yet another example task',
+    subtasks: [],
   },
 ];
