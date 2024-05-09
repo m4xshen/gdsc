@@ -1,16 +1,17 @@
+
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import styles from './styles.module.css';
 
-export default function Task({ initSubtasks , initTask }) {
+
+export default function Task({ initTask , initSubtasks, onClick }) {
   const [subtasks, setSubtasks] = useState(initSubtasks);
   const [task,setTask] = useState(initTask);
   
 
   return (
     <div className={styles.wrapper}>
-
-      <div className={task.done ? styles.mainTaskDone : styles.mainTask}>
+      <div className={task.done ? styles.mainTaskDone : styles.mainTask} onClick={()=>onClick(task.id)}>
         <div className={styles.firstLine}>
 
           <button
@@ -34,6 +35,7 @@ export default function Task({ initSubtasks , initTask }) {
         </div>
 
         <div className={styles.description}>{task.description}</div>
+
         <button
           className={styles.button}
           onClick={() => {
@@ -52,18 +54,22 @@ export default function Task({ initSubtasks , initTask }) {
           +
         </button>
       </div>
+
       <div className={styles.subTasks}>
         {subtasks.map((subtask) => {
           
           return (
             <Task
+              id={subtask.id}
               key={subtask.id}
               initTask={subtask}
+              onClick={onClick}
               initSubtasks={subtask.subtasks}
             />            
           )
 
         })}
+
       </div>
     </div>
   );
