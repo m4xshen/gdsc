@@ -14,9 +14,8 @@ export default function Tasks() {
       {tasks.map((task) => (
         <Task
           key={task.id}
-          name={task.name}
-          description={task.description}
           initSubtasks={task.subtasks}
+          initTask={task}
         />
       ))}
       <AddMainButton tasks={tasks} setTasks={setTasks} />
