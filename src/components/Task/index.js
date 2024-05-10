@@ -4,7 +4,7 @@ import { useState } from 'react';
 import styles from './styles.module.css';
 
 
-export default function Task({ initTask , initSubtasks, onClick }) {
+export default function Task({ initTask , initSubtasks, onClick , setDetailBox , detailBox}) {
   const [subtasks, setSubtasks] = useState(initSubtasks);
   const [task,setTask] = useState(initTask);
   
@@ -26,12 +26,19 @@ export default function Task({ initTask , initSubtasks, onClick }) {
                 done: !task.done,
               });
 
-              console.log(task);
             }}>
 
             {"\u2713"} </button>
 
-          <div className={task.done ? styles.nameDone : styles.name}>{task.name}</div>
+          <div className={task.done ? styles.nameDone : styles.name} onClick={() => {
+            setDetailBox({
+              ...detailBox,
+              name: task.name,
+              description: task.description,
+              open: 1,
+          });
+          }}>{task.name}</div>
+          
         </div>
 
         <div className={styles.description}>{task.description}</div>
@@ -65,6 +72,8 @@ export default function Task({ initTask , initSubtasks, onClick }) {
               initTask={subtask}
               onClick={onClick}
               initSubtasks={subtask.subtasks}
+              setDetailBox={setDetailBox}
+              detailBox={detailBox}
             />            
           )
 
