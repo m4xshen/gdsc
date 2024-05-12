@@ -38,10 +38,9 @@ export default function Tasks() {
         <Task
           key={task.id}
           id={task.id}
-          name={task.name}
-          description={task.description}
           onClick={handleClick}
           initSubtasks={task.subtasks}
+          initTask={task}
         />
       ))}   
       {showButton && <button onClick={handleButtonClick}>Click me</button>}
