@@ -6,7 +6,7 @@ import styles from './styles.module.css';
 import { initialTasks } from '@/data/tasks';
 import AddMainButton from '@/components/AddMainButton';
 
-export default function Tasks({detailBox, setDetailBox}) {
+export default function Tasks() {
   const [tasks, setTasks] = useState(initialTasks);
   
   return (
@@ -17,8 +17,7 @@ export default function Tasks({detailBox, setDetailBox}) {
           key={task.id}
           initSubtasks={task.subtasks}
           initTask={task}
-          detailBox={detailBox}
-          setDetailBox={setDetailBox}
+          
         />
       ))}   
       <AddMainButton tasks={tasks} setTasks={setTasks} />
