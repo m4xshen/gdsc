@@ -5,13 +5,11 @@ import Task from '@/components/Task';
 import styles from './styles.module.css';
 import { initialTasks } from '@/data/tasks';
 import AddMainButton from '@/components/AddMainButton';
-import { initailDetailBox } from '@/data/DetailBox';
 
-export default function Tasks() {
+export default function Tasks({detailBox, setDetailBox}) {
   const [tasks, setTasks] = useState(initialTasks);
   const [showButton, setShowButton] = useState(false);
   const [deletetask, setdeletetask] = useState(null);
-  const [detailBox,setDetailBox] = useState(initailDetailBox);
  
   function handleClick(taskid){
     console.log('id: ', taskid)
@@ -44,23 +42,14 @@ export default function Tasks() {
           onClick={handleClick}
           initSubtasks={task.subtasks}
           initTask={task}
-          setDetailBox={setDetailBox}
           detailBox={detailBox}
+          setDetailBox={setDetailBox}
         />
       ))}   
       {showButton && <button onClick={handleButtonClick}>Click me</button>}
       <AddMainButton tasks={tasks} setTasks={setTasks} />
 
-      <div className={detailBox.open ? styles.detailBoxShow : styles.detailBox}>
-        <button className={styles.closeButton} onClick = {() => {
-          setDetailBox({
-            ...detailBox,
-            open: 0,
-        });
-        }}>X</button>
-        <div className={styles.detailBoxName}>{detailBox.name}</div>
-        <div className={styles.detailBoxDescription}>{detailBox.description }</div>
-      </div>
+
 
     </div>
 
