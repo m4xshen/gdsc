@@ -2,8 +2,6 @@
 import styles from './page.module.css';
 import Tasks from '@/components/Tasks';
 import { useState } from 'react';
-import { initailDetailBox } from '@/data/InitDetailBox';
-
 
 export default function Home() {
   const [detailBox, setDetailBox] = useState(null);

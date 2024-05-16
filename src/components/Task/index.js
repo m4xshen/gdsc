@@ -79,6 +79,7 @@ export default function Task({ initTask , initSubtasks, onClick , detailBox, set
           
           return (
             <Task
+              key={subtask.id}
               initTask={subtask}
               initSubtasks={subtask.subtasks}
               detailBox={detailBox}
