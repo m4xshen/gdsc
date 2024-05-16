@@ -14,6 +14,7 @@ export default function Tasks({detailBox, setDetailBox}) {
     <div className={styles.root}>
       {tasks.map((task) => (
         <Task
+          key={task.id}
           initSubtasks={task.subtasks}
           initTask={task}
           detailBox={detailBox}
