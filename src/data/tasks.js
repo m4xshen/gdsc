@@ -53,7 +53,7 @@ export const initialTasks = [
         name: 'Subtask 2',
         done: 0,
         description: 'This is another subtask',
-        tag: null,
+        tag: '@Mary',
         subtasks: [],
       },
     ],
