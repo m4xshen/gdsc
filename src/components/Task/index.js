@@ -1,15 +1,18 @@
 
 import { nanoid } from 'nanoid';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import styles from './styles.module.css';
 
 
 
-export default function Task({ initTask , initSubtasks, onClick , detailBox, setDetailBox }) {
+export default function Task({ initTask , initSubtasks, onClick }) {
   const [subtasks, setSubtasks] = useState(initSubtasks);
   const [task,setTask] = useState(initTask);
   const [isDeleted, setIsDeleted] = useState(false);
-  
+  const [detailBox, setDetailBox] = useState(null);
+
+  const nameRef = useRef(null);
+  const descriptionRef = useRef(null);
 
   const handleDelete = () => {
     setIsDeleted(true);
@@ -74,22 +77,51 @@ export default function Task({ initTask , initSubtasks, onClick , detailBox, set
         </button>
       </div>
 
-      <div className={styles.subTasks}>
-        {subtasks.map((subtask) => {
-          
-          return (
-            <Task
-              key={subtask.id}
-              initTask={subtask}
-              initSubtasks={subtask.subtasks}
-              detailBox={detailBox}
-              setDetailBox={setDetailBox}
-            />            
-          )
+      <div className={styles.subtasksAndDetail}>
+        <div className={styles.subTasks}>
+          {subtasks.map((subtask) => {
 
-        })}
+            return (
+              <Task
+                key={subtask.id}
+                initTask={subtask}
+                initSubtasks={subtask.subtasks}
 
+              />
+            )
+
+          })}
+
+        </div>
+
+        <div className={detailBox ? styles.detailBoxShow : null}>
+          <button className={styles.closeButton} onClick={() => {
+            setDetailBox(null);
+          }}>X</button>
+          <textarea
+          ref={nameRef}
+          className={detailBox ? styles.detailBoxName : styles.invisible} 
+          placeholder='Input Task Name.' 
+          defaultValue={detailBox ? detailBox.task.name : null}>
+          </textarea>
+          <textarea 
+          ref={descriptionRef}
+          className={ detailBox ? styles.detailBoxDescription: styles.invisible } 
+          placeholder='Input Task Description.'
+          defaultValue={detailBox ? detailBox.task.description : null}>
+          </textarea>
+
+          <button className={detailBox ? styles.detailSaveButton : styles.invisible} onClick={ () => {
+            setTask({
+              ...task,
+              name: nameRef.current.value,
+              description: descriptionRef.current.value,
+            });
+            setDetailBox(null);
+          }}>Save</button>
+        </div>
       </div>
+
     </div>
   );
 }
