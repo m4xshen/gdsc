@@ -53,6 +53,11 @@
   margin-top: 0.5rem;
 }
 
+.tag {
+  font-size: 0.7rem;
+  margin-top: 0.7rem;
+}
+
 .button {
   display: none;
   position: absolute;
@@ -137,6 +142,16 @@
 .detailBoxDescription {
   position: absolute;
   top: 3rem;
+  left: 0.5rem;
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+  border: none;
+  resize: none;
+}
+
+.detailBoxTag {
+  position: absolute;
+  top: 7rem;
   left: 0.5rem;
   font-size: 1.5rem;
   margin-top: 0.5rem;

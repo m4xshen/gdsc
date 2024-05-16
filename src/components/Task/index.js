@@ -13,6 +13,7 @@ export default function Task({ initTask , initSubtasks, onClick }) {
 
   const nameRef = useRef(null);
   const descriptionRef = useRef(null);
+  const tagRef = useRef(null);
 
   const handleDelete = () => {
     setIsDeleted(true);
@@ -57,6 +58,9 @@ export default function Task({ initTask , initSubtasks, onClick }) {
         </div>
 
         <div className={styles.description}>{task.description}</div>
+        <div className={styles.tag}>{task.tag}</div>
+        
+        
 
         <button
           className={styles.button}
@@ -110,12 +114,19 @@ export default function Task({ initTask , initSubtasks, onClick }) {
           placeholder='Input Task Description.'
           defaultValue={detailBox ? detailBox.task.description : null}>
           </textarea>
+          <textarea 
+          ref={tagRef}
+          className={ detailBox ? styles.detailBoxTag: styles.invisible } 
+          placeholder='Input someone name for @.'
+          defaultValue={detailBox ? detailBox.task.tag : null}>
+          </textarea>
 
           <button className={detailBox ? styles.detailSaveButton : styles.invisible} onClick={ () => {
             setTask({
               ...task,
               name: nameRef.current.value,
               description: descriptionRef.current.value,
+              tag: '@' + tagRef.current.value
             });
             setDetailBox(null);
           }}>Save</button>
