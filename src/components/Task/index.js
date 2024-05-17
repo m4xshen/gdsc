@@ -36,7 +36,7 @@ export default function Task({ initTask, initSubtasks, onClick }) {
               });
             }}
           >
-            {'\u2713'}
+            {task.done ? '\u2713' : ''}
           </button>
 
           <button className={styles.deletebutton} onClick={handleDelete}>

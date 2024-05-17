@@ -6,21 +6,23 @@
 .mainTask {
   position: relative;
   max-width: 20rem;
-  border: solid 1px #212121;
+  border: solid 1px #00000020;
   border-radius: 0.5rem;
   padding: 0.5rem;
   background-color: white;
   filter: brightness(1);
+  transition: filter 0.2s;
 }
 
 .mainTaskDone {
   position: relative;
   max-width: 20rem;
-  border: solid 1px #212121;
+  border: solid 1px #00000020;
   border-radius: 0.5rem;
   padding: 0.5rem;
   background-color: white;
-  filter: brightness(0.5);
+  filter: brightness(0.7);
+  transition: filter 0.2s;
 }
 
 .name {
@@ -85,12 +87,14 @@
 }
 
 .doneButton {
+  border: solid 1px #00000090;
+  outline: none;
   border-radius: 50%;
-  border-color: black;
   width: 1.4rem;
   height: 1.4rem;
   background-color: transparent;
   cursor: pointer;
+  color: #00000090;
 }
 
 .deleteblock {
