@@ -2,7 +2,7 @@ import { nanoid } from 'nanoid';
 import { useRef, useState } from 'react';
 import styles from './styles.module.css';
 
-export default function Task({ initTask, initSubtasks, onClick }) {
+export default function Task({ initTask, initSubtasks }) {
   const [subtasks, setSubtasks] = useState(initSubtasks);
   const [task, setTask] = useState(initTask);
   const [isDeleted, setIsDeleted] = useState(false);
