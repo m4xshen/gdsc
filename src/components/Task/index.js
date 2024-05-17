@@ -178,7 +178,10 @@ export default function Task({ initTask, initSubtasks }) {
                       name: nameRef.current.value,
                       description: descriptionRef.current.value,
                       tag: tagRef.current.value,
-                      labels: labelsRef.current.value.split(','),
+                      labels:
+                        labelsRef.current.value === ''
+                          ? []
+                          : labelsRef.current.value.split(','),
                     });
                     setDetailBox(null);
                   }}
