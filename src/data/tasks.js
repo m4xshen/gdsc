@@ -31,7 +31,6 @@ export const initialTasks = [
         tag: '@Henry',
         subtasks: [],
       },
-
     ],
   },
   {

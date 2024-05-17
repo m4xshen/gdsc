@@ -8,24 +8,13 @@ import AddMainButton from '@/components/AddMainButton';
 
 export default function Tasks() {
   const [tasks, setTasks] = useState(initialTasks);
-  
+
   return (
-    
     <div className={styles.root}>
       {tasks.map((task) => (
-        <Task
-          key={task.id}
-          initSubtasks={task.subtasks}
-          initTask={task}
-          
-        />
-      ))}   
+        <Task key={task.id} initSubtasks={task.subtasks} initTask={task} />
+      ))}
       <AddMainButton tasks={tasks} setTasks={setTasks} />
-
-
-
     </div>
-
-    
   );
 }
