@@ -14,6 +14,7 @@ export const initialTasks = [
         description: 'This is a subtask',
         tag: null,
         subtasks: [],
+        labels: ['label1'],
       },
       {
         id: id++,
@@ -22,6 +23,7 @@ export const initialTasks = [
         description: 'This is another subtask',
         tag: null,
         subtasks: [],
+        labels: ['exercise', 'NYCU'],
       },
       {
         id: id++,
@@ -30,6 +32,7 @@ export const initialTasks = [
         description: 'This is a subtask yooo~',
         tag: '@Henry',
         subtasks: [],
+        labels: ['self-study', 'home'],
       },
     ],
   },
@@ -46,6 +49,7 @@ export const initialTasks = [
         description: 'This is a subtask',
         tag: null,
         subtasks: [],
+        labels: ['social', 'NYCU'],
       },
       {
         id: id++,
@@ -54,6 +58,7 @@ export const initialTasks = [
         description: 'This is another subtask',
         tag: '@Mary',
         subtasks: [],
+        labels: ['marketing'],
       },
     ],
   },
@@ -64,5 +69,6 @@ export const initialTasks = [
     description: 'This is yet another example task',
     tag: null,
     subtasks: [],
+    labels: ['chores'],
   },
 ];

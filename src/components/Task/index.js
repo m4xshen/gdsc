@@ -2,7 +2,7 @@ import { nanoid } from 'nanoid';
 import { useRef, useState } from 'react';
 import styles from './styles.module.css';
 
-export default function Task({ initTask, initSubtasks }) {
+export default function Task({ initTask, initSubtasks, onClick }) {
   const [subtasks, setSubtasks] = useState(initSubtasks);
   const [task, setTask] = useState(initTask);
   const [isDeleted, setIsDeleted] = useState(false);
@@ -36,9 +36,7 @@ export default function Task({ initTask, initSubtasks }) {
               });
             }}
           >
-            {
-              task.done ? '\u2713' : ''
-            }
+            {'\u2713'}
           </button>
 
           <button className={styles.deletebutton} onClick={handleDelete}>
@@ -65,6 +63,22 @@ export default function Task({ initTask, initSubtasks }) {
         </div>
 
         <div className={styles.description}>{task.description}</div>
+        <div className={styles.labels}>
+          {task.labels?.map((label, index) => (
+            <span key={index} className={styles.label}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+                width="16"
+                height="16"
+              >
+                <path d="M0 80V229.5c0 17 6.7 33.3 18.7 45.3l176 176c25 25 65.5 25 90.5 0L418.7 317.3c25-25 25-65.5 0-90.5l-176-176c-12-12-28.3-18.7-45.3-18.7H48C21.5 32 0 53.5 0 80zm112 32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" />
+              </svg>
+              {label}
+            </span>
+          ))}
+        </div>
+
         <div className={styles.tag}>{task.tag}</div>
 
         <button
@@ -88,15 +102,13 @@ export default function Task({ initTask, initSubtasks }) {
 
       <div className={styles.subtasksAndDetail}>
         <div className={styles.subTasks}>
-          {subtasks.map((subtask) => {
-            return (
-              <Task
-                key={subtask.id}
-                initTask={subtask}
-                initSubtasks={subtask.subtasks}
-              />
-            );
-          })}
+          {subtasks.map((subtask) => (
+            <Task
+              key={subtask.id}
+              initTask={subtask}
+              initSubtasks={subtask.subtasks}
+            />
+          ))}
         </div>
 
         <div className={detailBox ? styles.detailBoxShow : null}>
