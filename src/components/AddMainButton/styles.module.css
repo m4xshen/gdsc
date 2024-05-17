@@ -1,11 +1,16 @@
 .mainButton {
-  color: white;
-  width: 1.5rem;
-  height: 1.5rem;
-  border-radius: 50%;
-  border-color: white;
-  border-style: solid;
-  background-color: black;
-  margin: 0 0 10rem 0;
+  width: max-content;
+  padding: 5px;
+  outline: none;
+  border: solid 1px #00000020;
+  border-radius: 5px;
   cursor: pointer;
+  background-color: white;
+  font-size: 1.2rem;
+  min-width: 13.5rem;
+  transition: background-color 0.2s;
+}
+
+.mainButton:hover {
+  background-color: #f0f0f0;
 }

@@ -10,9 +10,10 @@ export default function AddMainButton({ tasks, setTasks }) {
           ...tasks,
           {
             id: nanoid(),
-            name: 'New Maintask',
-            description: 'New Detail.',
+            name: 'New Task',
+            description: 'Task Description',
             subtasks: [],
+            labels: [],
           },
         ]);
       }}

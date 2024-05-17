@@ -1,6 +1,6 @@
 .wrapper {
   display: flex;
-  column-gap: 0.5rem;
+  column-gap: 1rem;
 }
 
 .mainTask {
@@ -12,48 +12,29 @@
   background-color: white;
   filter: brightness(1);
   transition: filter 0.2s;
+  padding-right: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .mainTaskDone {
-  position: relative;
-  max-width: 20rem;
-  border: solid 1px #00000020;
-  border-radius: 0.5rem;
-  padding: 0.5rem;
-  background-color: white;
   filter: brightness(0.7);
-  transition: filter 0.2s;
 }
 
 .name {
   font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.name:hover {
-  text-decoration: underline;
-}
-
-.nameDone {
-  font-size: 1.1rem;
-  font-weight: 600;
-  text-decoration: line-through;
-  cursor: pointer;
-}
-
-.nameDone:hover {
-  text-decoration: underline;
+  font-weight: 500;
 }
 
 .description {
   font-size: 0.9rem;
-  margin-top: 0.5rem;
 }
 
 .tag {
-  font-size: 0.75rem;
-  margin-top: 0.7rem;
+  display: flex;
+  gap: 3px;
+  font-size: 0.9rem;
 }
 
 .button {
@@ -63,27 +44,34 @@
   bottom: 0;
   margin: auto 0;
   right: -0.75rem;
-  color: white;
+  color: black;
   width: 1.5rem;
   height: 1.5rem;
-  border-radius: 50%;
-  border: none;
-  background-color: black;
+  border-radius: 5px;
+  border: solid 1px #00000020;
+  background-color: white;
   cursor: pointer;
+  transition: background-color 0.2s;
 }
 
-.mainTask:hover > .button {
+.button:hover {
+  background-color: #f0f0f0;
+}
+
+.mainTask:not(.mainTaskDone):hover > .button {
   display: block;
 }
 
 .subTasks {
   display: flex;
   flex-direction: column;
-  row-gap: 0.5rem;
+  row-gap: 1rem;
 }
 
 .firstLine {
   display: flex;
+  gap: 0.5rem;
+  align-items: center;
 }
 
 .doneButton {
@@ -107,9 +95,39 @@
   color: blanchedalmond;
 }
 
-.deletebutton {
-  background-color: transparent;
-  border-color: transparent;
+.mainTask:not(.mainTaskDone):hover > .buttons {
+  display: flex;
+  align-items: center;
+}
+
+.buttons {
+  display: none;
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  border-radius: 5px;
+  border: solid 1px #00000020;
+  background-color: white;
+}
+
+.buttons button {
+  border: none;
+  background-color: #ffffff;
+  padding: 3px 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.buttons button:first-child {
+  border-radius: 4px 0 0 4px;
+}
+
+.buttons button:last-child {
+  border-radius: 0 4px 4px 0;
+}
+
+.buttons > button:hover {
+  background-color: #f0f0f0;
 }
 
 .subtasksAndDetail {
@@ -117,43 +135,58 @@
   flex-direction: column;
 }
 
-.detailBoxShow {
+.backDrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #00000070;
+  z-index: 999;
+}
+
+.detailBox {
   z-index: 1000;
   position: absolute;
-  align-items: center;
   height: 15rem;
-  border: solid 1px #212121;
+  border: solid 1px #00000020;
   border-radius: 0.5rem;
   background-color: white;
   padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .detailBoxName {
-  font-size: 2rem;
+  font-family: sans-serif;
+  font-size: 1.5rem;
   font-weight: 600;
   max-height: 3rem;
-  border: none;
-  resize: none;
+  border: solid 1px #00000020;
+  border-radius: 5px;
+  padding: 5px;
+  outline: none;
 }
 
 .detailBoxDescription {
-  position: absolute;
-  top: 3rem;
-  left: 0.5rem;
-  font-size: 1.5rem;
-  margin-top: 0.5rem;
-  border: none;
+  font-family: sans-serif;
+  font-size: 1rem;
+  border: solid 1px #00000020;
+  border-radius: 5px;
+  padding: 5px;
   resize: none;
+  outline: none;
 }
 
 .detailBoxTag {
-  position: absolute;
-  top: 7rem;
-  left: 0.5rem;
-  font-size: 1.5rem;
-  margin-top: 0.5rem;
-  border: none;
+  font-family: sans-serif;
+  font-size: 1rem;
+  padding: 5px;
+  border-radius: 5px;
+  border: solid 1px #00000020;
   resize: none;
+  outline: none;
 }
 
 .closeButton {
@@ -168,37 +201,43 @@
   cursor: pointer;
 }
 
-.invisible {
-  display: none;
-}
-
-.detailSaveButton {
+.detailButtons {
   position: absolute;
   right: 1rem;
   bottom: 1rem;
-  font-weight: bold;
-  border-radius: 10%;
-  border-color: black;
-  width: 3rem;
-  height: 1.8rem;
-  background-color: transparent;
+  display: flex;
+  gap: 0.7rem;
+}
+
+.detailButtons > button {
+  font-weight: 600;
+  border-radius: 5px;
+  padding: 0.4rem 0.6rem;
   cursor: pointer;
+}
+
+.detailCancelButton {
+  background-color: white;
+  color: black;
+  border: solid 1px #00000020;
+}
+
+.detailSaveButton {
+  background-color: black;
+  color: white;
+  border: none;
+}
+
+.labels {
+  display: flex;
+  gap: 1rem;
 }
 
 .label {
   position: relative;
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  padding: 0.25rem 0.5rem;
-  margin-right: 0.25rem;
   font-size: 0.9rem;
-  font-weight: 500;
   border-radius: 0.25rem;
-  background: #f1f1f1;
-}
-
-.label svg {
-  width: 1rem;
-  height: 1rem;
-  margin-right: 0.5rem;
+  gap: 3px;
 }
